@@ -1,9 +1,13 @@
-'use strict';
-
-module.exports = (input, options = {}) => {
-	if (typeof input !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof input}`);
+'use strict'
+const constants = require('./constants')
+module.exports = (token) => {
+	if (typeof token !== 'string') {
+		throw new TypeError(`Expected a string, got ${typeof token}`)
 	}
 
-	return input + ' & ' + (options.postfix || 'rainbows');
-};
+	const ForwardGeocoding = require('./v1/forward-geocoding')({token})
+	return {
+		ForwardGeocoding,
+		constants
+	}
+}
