@@ -18,10 +18,10 @@ module.exports = ({token, url, body, method}) => {
 			if (response.statusCode >= 400) {
 				return reject({body, message: `Received status ${response.statusCode} from cedar API engine`})
 			}
-			if (body.result && body.result !== 'OK') {
+			if (body.status && body.status !== 'OK') {
 				return reject(body)
 			}
-			const results = body.results || body
+			const results = body.results || body.result || body
 			return resolve(results)
 		})
 	})

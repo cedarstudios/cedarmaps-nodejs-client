@@ -35,7 +35,7 @@ module.exports = ({token}) => {
 
 	return (query, index = STREET_INDEX, filters = {}) => {
 
-		if (!validIndex.includes(index)) throw new Error('Invalid forward geocod index provided')
+		if (!validIndex.includes(index)) throw new Error('Invalid forward geocode index provided')
 		return requestHelper({method: 'GET', token, url: GenerateForwardGeocodingUrl(query, index, filters)})
 	}
 
