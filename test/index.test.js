@@ -2,12 +2,12 @@ const test = require('ava')
 
 const index = require('../index')
 const validExports = [
-	'Distance',
-	'Direction',
-	'Tile',
-	'ForwardGeocoding',
-	'ReverseGeocoding',
-	'constants'
+	'distance',
+	'direction',
+	'tile',
+	'forwardGeocoding',
+	'reverseGeocoding',
+	'Constants'
 ]
 
 test('Should export a function', t => {
