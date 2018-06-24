@@ -29,7 +29,7 @@ const CedarMaps = cedarMaps(apiKey);
 
 ## API
 
-### #ForwardGeocoding(query, index, filters)
+### #forwardGeocoding(query, index, filters)
 
 #### input
 query: `string`, URL-encoded text **[REQUIRED]**
@@ -105,7 +105,7 @@ filters:
         }
     ]
 ```
-### #ReverseGeocoding(lat, lon, index)
+### #reverseGeocoding(lat, lon, index)
 It gives you an address based on a provided LatLng pair.
 #### input
 lat: `number`, Latitude **[REQUIRED]**
@@ -157,7 +157,7 @@ index: Pick from CedarMaps.Constants.INDEXES for example CedarMaps.Constants.IND
     }
 ```
 
-### #Distance(points)
+### #distance(points)
 This method calculates the distance between points in meters. It can be called with up to 100 different points in a single request.
 
 #### input
@@ -191,7 +191,7 @@ points: `array`, Array of point objects `{lat:<SOME_LAT>,lon:<SOME_LON>}` **[REQ
     }
 ```
 
-### #Direction(firstPoint, secondPoint, options)
+### #direction(firstPoint, secondPoint, options)
 This method calculates the optimal driving routes between two or more points.
 
 #### input
@@ -421,7 +421,7 @@ Sample Response when instructions option provided:
 ```
 
 
-### #Tile(mapId)
+### #tile(mapId)
 TileJSON is a format that manages the complexities of custom maps. It organizes zoom levels, center points, legend contents, and more, into a format that makes it easy to display a map.
 
 #### input
