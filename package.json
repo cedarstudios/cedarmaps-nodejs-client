@@ -1,6 +1,6 @@
 {
  "name": "cedar-maps",
- "version": "1.0.1",
+ "version": "1.0.2",
  "description": "A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.",
  "license": "MIT",
  "repository": "https://github.com/cedarstudios/cedarmaps-nodejs-client.git",
@@ -17,11 +17,10 @@
  },
  "files": [
   "index.js",
-   "helpers",
-   "test",
-   "v1",
-   "constants.js"
-
+  "helpers",
+  "test",
+  "v1",
+  "constants.js"
  ],
  "keywords": [
   "map",
