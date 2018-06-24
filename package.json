@@ -16,7 +16,12 @@
   "test": "ava"
  },
  "files": [
-  "index.js"
+  "index.js",
+   "helpers",
+   "test",
+   "v1",
+   "constants.js"
+
  ],
  "keywords": [
   "map",
