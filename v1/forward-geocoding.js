@@ -1,7 +1,8 @@
 const queryString = require('query-string')
 const validIndex = ['cedarmaps.streets']
-const {FORWARD_GEOCODE: {STREET_INDEX}} = require('../constants')
+const {INDEXES: {STREET_INDEX}, FORWARD_GEOCODE: {TYPE}} = require('../constants')
 
+const validTypes = Object.values(TYPE)
 const _ = require('lodash')
 module.exports = ({RequestHelper}) => {
 
@@ -16,12 +17,16 @@ module.exports = ({RequestHelper}) => {
 		if (ne && ne.lat && ne.lon) {
 			validNe = `${ne.lat},${ne.lon}`
 		}
-		if (location && location.lat && location.lon) {
+		if (sw && sw.lat && sw.lon) {
 			validSw = `${sw.lat},${sw.lon}`
 		}
 		let type = []
-		if (Array.isArray(inputTypes))
+		if (inputTypes && Array.isArray(inputTypes)) {
+			inputTypes.forEach(type => {
+				if (!validTypes.includes(type)) throw Error('Invalid type provided')
+			})
 			type = inputTypes.join(',')
+		}
 		return `geocode/${index}/${query}.json?${queryString.stringify(_.pickBy({
 			limit,
 			distance,
@@ -33,7 +38,6 @@ module.exports = ({RequestHelper}) => {
 	}
 
 	return (query, index = STREET_INDEX, filters = {}) => {
-
 		if (!validIndex.includes(index)) throw new Error('Invalid forward geocode index provided')
 		return RequestHelper({method: 'GET', url: GenerateForwardGeocodingUrl(query, index, filters)})
 	}

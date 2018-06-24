@@ -1,4 +1,4 @@
-const {FORWARD_GEOCODE: {STREET_INDEX}} = require('../constants')
+const {INDEXES:{STREET_INDEX}} = require('../constants')
 const validIndex = [STREET_INDEX]
 
 const _ = require('lodash')

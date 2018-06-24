@@ -1,6 +1,7 @@
 const CreateValidRequestMock = ({validMethod, validUrl, ignore = false}) => {
 	return ({method, token, url}) => {
-		if (!ignore  && (validMethod !== method || validUrl !== url)) throw Error()
+		if (!ignore  && (validMethod !== method || validUrl !== decodeURIComponent(url))) throw Error(`Invalid method or url
+		 | valid is ${validMethod}, ${validUrl}| provided ${method}, ${decodeURIComponent(url)}`)
 		return Promise.resolve()
 	}
 }

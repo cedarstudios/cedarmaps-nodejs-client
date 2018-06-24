@@ -1,6 +1,8 @@
 module.exports = {
-	FORWARD_GEOCODE: {
+	INDEXES: {
 		STREET_INDEX: 'cedarmaps.streets',
+	},
+	FORWARD_GEOCODE: {
 		TYPE: {
 			LOCALITY: 'locality',
 			ROUNDABOUT: 'roundabout',
