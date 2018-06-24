@@ -1,7 +1,7 @@
 const request = require('request')
 const assert = require('assert')
 const BASE_URL = 'https://api.cedarmaps.com/v1'
-module.exports = ({token, url, body, method}) => {
+module.exports = (token) => ({url, body, method}) => {
 	const options = {
 		method,
 		url: `${BASE_URL}/${url}`,

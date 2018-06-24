@@ -1,5 +1,5 @@
 const _ = require('lodash')
-module.exports = ({token, RequestHelper}) => {
+module.exports = ({RequestHelper}) => {
 
 	const GenerateForwardGeocodingUrl = (points) => {
 		const {url} = points.reduce((result, currentPoint, index) => {
@@ -17,8 +17,8 @@ module.exports = ({token, RequestHelper}) => {
 	}
 
 	return (points) => {
-		if (!points || !Array.isArray(points) || !points.length % 2 === 1) throw Error('Invalid points provided')
-		return RequestHelper({method: 'GET', token, url: GenerateForwardGeocodingUrl(points)})
+		if (!points || !Array.isArray(points) || points.length % 2 === 1) throw Error('Invalid points provided')
+		return RequestHelper({method: 'GET', url: GenerateForwardGeocodingUrl(points)})
 	}
 
 }
