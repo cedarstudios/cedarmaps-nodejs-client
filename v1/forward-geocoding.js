@@ -1,10 +1,9 @@
 const queryString = require('query-string')
-const requestHelper = require('../helpers/request')
 const validIndex = ['cedarmaps.streets']
 const {FORWARD_GEOCODE: {STREET_INDEX}} = require('../constants')
 
 const _ = require('lodash')
-module.exports = ({token}) => {
+module.exports = ({token, RequestHelper}) => {
 
 	const GenerateForwardGeocodingUrl = (query, index, filters = {}) => {
 		const {limit, distance, location, type: inputTypes, ne, sw} = filters
@@ -36,7 +35,7 @@ module.exports = ({token}) => {
 	return (query, index = STREET_INDEX, filters = {}) => {
 
 		if (!validIndex.includes(index)) throw new Error('Invalid forward geocode index provided')
-		return requestHelper({method: 'GET', token, url: GenerateForwardGeocodingUrl(query, index, filters)})
+		return RequestHelper({method: 'GET', token, url: GenerateForwardGeocodingUrl(query, index, filters)})
 	}
 
 }

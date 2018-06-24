@@ -1,37 +1,35 @@
 {
- "name": "cedar-maps",
- "version": "1.0.0",
- "description": "A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.",
- "license": "MIT",
- "repository": "sinaabadi/cedar-maps",
- "author": {
-  "name": "Sina Abadi",
-  "email": "sina_abadi@hotmail.com",
-  "url": "cedarmaps.com"
- },
- "engines": {
-  "node": ">=6"
- },
- "scripts": {
-  "test": "xo && nyc ava"
- },
- "files": [
-  "index.js"
- ],
- "keywords": [
-  "map",
-  "cedar",
-  "geocoding",
-  "distance"
- ],
- "dependencies": {
-  "lodash": "^4.17.10",
-  "query-string": "^6.1.0",
-  "request": "^2.87.0"
- },
- "devDependencies": {
-  "ava": "^0.25.0",
-  "nyc": "^12.0.0",
-  "xo": "^0.21.0"
- }
+  "name": "cedar-maps",
+  "version": "1.0.0",
+  "description": "A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.",
+  "license": "MIT",
+  "repository": "sinaabadi/cedar-maps",
+  "author": {
+	"name": "Sina Abadi",
+	"email": "sina_abadi@hotmail.com",
+	"url": "cedarmaps.com"
+  },
+  "engines": {
+	"node": ">=6"
+  },
+  "scripts": {
+	"test": "ava"
+  },
+  "files": [
+	"index.js"
+  ],
+  "keywords": [
+	"map",
+	"cedar",
+	"geocoding",
+	"distance"
+  ],
+  "dependencies": {
+	"lodash": "^4.17.10",
+	"query-string": "^6.1.0",
+	"request": "^2.87.0"
+  },
+  "devDependencies": {
+	"ava": "^0.25.0"
+  }
 }
