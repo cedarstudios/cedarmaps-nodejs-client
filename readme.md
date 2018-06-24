@@ -1,6 +1,6 @@
 # cedar-maps [![Build Status](https://travis-ci.org/sinaabadi/cedar-maps.svg?branch=master)](https://travis-ci.org/sinaabadi/cedar-maps)
 
-> A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.
+A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.
 
 
 ## Install
