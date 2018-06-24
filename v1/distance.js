@@ -1,4 +1,3 @@
-const queryString = require('query-string')
 const requestHelper = require('../helpers/request')
 
 const _ = require('lodash')

@@ -1,4 +1,3 @@
-const queryString = require('query-string')
 const requestHelper = require('../helpers/request')
 const {FORWARD_GEOCODE: {STREET_INDEX}} = require('../constants')
 const validIndex = [STREET_INDEX]
