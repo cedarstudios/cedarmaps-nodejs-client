@@ -8,9 +8,11 @@ module.exports = (token) => {
 	const ForwardGeocoding = require('./v1/forward-geocoding')({token})
 	const ReverseGeocoding = require('./v1/reverse-geocoding')({token})
 	const Distance = require('./v1/distance')({token})
+	const Direction = require('./v1/direction')({token})
 
 	return {
 		Distance,
+		Direction,
 		ForwardGeocoding,
 		ReverseGeocoding,
 		constants
