@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.",
   "license": "MIT",
-  "repository": "sinaabadi/cedar-maps",
+  "repository": "https://github.com/cedarstudios/cedarmaps-nodejs-client.git",
   "author": {
 	"name": "Sina Abadi",
 	"email": "sina_abadi@hotmail.com",
-	"url": "cedarmaps.com"
+	"url": "https://github.com/sinaabadi"
   },
   "engines": {
 	"node": ">=6"
