@@ -7,9 +7,9 @@ test('Should accept latitude and longitude as valid first and second arguments',
 	t.notThrows(() => ReverseGeocoding(1, 2), Error)
 })
 
-test('Should not accept invalid index as third arguments', t => {
+test('Should not accept invalid index as third arguments', async t => {
 	const ReverseGeocoding = require('../../v1/reverse-geocoding')({RequestHelper: CreateValidRequestMock({ignore: true})})
-	t.throws(() => ReverseGeocoding(1, 2, 3), Error)
+	await t.throws(ReverseGeocoding(1, 2, 3), Error)
 })
 
 test('Should accept valid index as third arguments', t => {
@@ -22,6 +22,10 @@ test('Should return a promise', t => {
 	return result.then(() => t.pass()).catch(() => t.pass())
 })
 
+test.cb('Should accept callback', t => {
+	const ReverseGeocoding = require('../../v1/reverse-geocoding')({RequestHelper: CreateValidRequestMock({ignore: true})})
+	ReverseGeocoding(1, 2, t.end())
+})
 test('Should create valid url when valid direction args provided', t => {
 	const validUrl = 'geocode/cedarmaps.streets/1,2.json'
 	const ReverseGeocoding = require('../../v1/reverse-geocoding')({

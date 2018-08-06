@@ -1,5 +1,6 @@
 const queryString = require('query-string')
 const _ = require('lodash')
+const Q = require('q')
 module.exports = ({RequestHelper}) => {
 	const GenerateForwardGeocodingUrl = (points, options) => {
 		const {instructions} = options
@@ -20,9 +21,19 @@ module.exports = ({RequestHelper}) => {
 		}, undefined))}`
 	}
 
-	return (firstPoint, secondPoint, options = {}) => {
-		if (!firstPoint || !secondPoint) throw Error('Invalid points provided')
-		return RequestHelper({method: 'GET', url: GenerateForwardGeocodingUrl([firstPoint, secondPoint], options)})
+	return (firstPoint, secondPoint, options = {}, callback) => {
+		const deferred = Q.defer()
+		if (!firstPoint || !secondPoint) deferred.reject(Error('Invalid points provided'))
+		try {
+			const promise = RequestHelper({
+				method: 'GET',
+				url: GenerateForwardGeocodingUrl([firstPoint, secondPoint], options)
+			})
+			deferred.resolve(promise)
+		} catch (e) {
+			deferred.reject(e)
+		}
+		deferred.promise.nodeify(callback)
+		return deferred.promise
 	}
-
 }

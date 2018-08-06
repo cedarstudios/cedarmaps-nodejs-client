@@ -13,7 +13,7 @@ const validExports = [
 test('Should export a function', t => {
 	t.is(typeof index, 'function')
 })
-test('Should fail when not providing API key', t => {
+test('Should fail when not providing A PI key', t => {
 	t.throws(() => index(), Error)
 })
 

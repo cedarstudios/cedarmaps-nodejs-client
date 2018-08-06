@@ -13,6 +13,12 @@ test('Should return a promise', t => {
 	return result.then(() => t.pass()).catch(() => t.pass())
 })
 
+
+test.cb('Should accept callback', t => {
+	const Tile = require('../../v1/tile')({RequestHelper: CreateValidRequestMock({ignore: true})})
+	const result = Tile(1, t.end())
+})
+
 test('Should create valid url', t => {
 	const validUrl = 'tiles/1.json'
 	const Tile = require('../../v1/tile')({

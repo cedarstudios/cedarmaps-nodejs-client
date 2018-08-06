@@ -5,14 +5,14 @@ let validPoint2 = {lat: 2, lon: 2}
 const query = 'test'
 const {INDEXES, FORWARD_GEOCODE} = require('../../constants')
 const validIndexes = [INDEXES.STREET_INDEX]
-test('Should accept required query as first', t => {
+test('Should accept required query as first arg', t => {
 	const ForwardGeocoding = require('../../v1/forward-geocoding')({RequestHelper: CreateValidRequestMock({ignore: true})})
 	t.notThrows(() => ForwardGeocoding(1), Error)
 })
 
-test('Should not accept invalid index as second arg', t => {
+test('Should not accept invalid index as second arg', async t => {
 	const ForwardGeocoding = require('../../v1/forward-geocoding')({RequestHelper: CreateValidRequestMock({ignore: true})})
-	t.throws(() => ForwardGeocoding(1, 2), Error)
+	await t.throws(ForwardGeocoding(1, 2), Error)
 })
 
 test('Should return a promise when valid args provided', t => {
@@ -21,6 +21,10 @@ test('Should return a promise when valid args provided', t => {
 	return result.then(() => t.pass()).catch(() => t.pass())
 })
 
+test.cb('Should accept callback', t => {
+	const ForwardGeocoding = require('../../v1/forward-geocoding')({RequestHelper: CreateValidRequestMock({ignore: true})})
+	ForwardGeocoding(query, validIndexes[0], t.end())
+})
 test('Should create valid url when valid query provided', t => {
 	const validUrl = `geocode/cedarmaps.streets/test.json?`
 	const ForwardGeocoding = require('../../v1/forward-geocoding')({
