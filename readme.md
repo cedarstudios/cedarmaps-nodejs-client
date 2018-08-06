@@ -450,12 +450,13 @@ mapId: `string`, Cedar map ID  **[REQUIRED]**
 }
 ```
 
-### Callback interface
- You can provide callback as last parameters and get results just like promise interface
+### Callback Interface
+ You can provide callback as last parameter:
 
  **Example**
  ```js
- CedarMaps.forwardGeocoding(query, index, filters, function(err, result) => {
+ const cedarMapsApi = CedarMaps.api(accessToken)
+ CedarMaps.reverseGeocoding(lat, lng, CedarMaps.Constants.INDEXES.STREET_INDEX, function (err, result) {
     if(err){
        return console.error(err)
     }
