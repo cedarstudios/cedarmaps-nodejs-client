@@ -191,15 +191,22 @@ points: `array`, Array of point objects `{lat:<SOME_LAT>,lon:<SOME_LON>}` **[REQ
     }
 ```
 
-### #direction(firstPoint, secondPoint, options)
+### #direction(points, options)
 This method calculates the optimal driving routes between two or more points.
 
+**Note**: Number of points should be even.
+
 #### input
-firstPoint: `object`, `{lat:<SOME_LAT>,lon:<SOME_LON>}` **[REQUIRED]**
+points: `array`, \[ `{lat:<SOME_LAT>,lon:<SOME_LON>}`,...\] **[REQUIRED]**
 
-secondPoint: `object`, `{lat:<SOME_LAT>,lon:<SOME_LON>}` **[REQUIRED]**
+options: `object` Currently the only option is `instructions` that is `boolean`
 
-options: `object` Currently the only option is instructions that is `boolean`
+**Example**
+```js
+{
+  instructions: true
+}
+```
 
 ##### Response Elements:
 
