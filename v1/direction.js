@@ -4,26 +4,19 @@ const Q = require('q')
 module.exports = ({RequestHelper}) => {
 	const GenerateDirectionUrl = (points, options) => {
 		const {instructions} = options
-		const {url} = points.reduce((result, currentPoint, index) => {
-			if (index % 2 === 0) {
-				result.previousPoint = currentPoint
-				return result
-			}
-			const {lat: firstLat, lon: firstLon} = result.previousPoint
-			const {lat: secondLat, lon: secondLon} = currentPoint
-			if (!firstLat || !firstLon || !secondLat || !secondLon) throw Error('Invalid lat or lon provided')
-			result.url = result.url.concat(`${firstLat},${firstLon};${secondLat},${secondLon}/`)
-			return result
-		}, {url: 'direction/cedarmaps.driving/', previousPoint: null})
+		points.forEach(point => {
+			if(!point.lat || !point.lon) throw Error('Invalid lat or lon provided')
+		})
+		const url = `direction/cedarmaps.driving/${points.map(point => `${point.lat},${point.lon}`).join(';')}`
 
-		return `${url.slice(0, -1)}?${queryString.stringify(_.pickBy({
+		return `${url}?${queryString.stringify(_.pickBy({
 			instructions: !!instructions
 		}, undefined))}`
 	}
 
 	return (points, options = {}, callback) => {
 		const deferred = Q.defer()
-		if (points.length === 0 || points.length % 2 !== 0) deferred.reject(Error('Invalid points provided'))
+		if (points.length === 0 || points.length === 1) deferred.reject(Error('Invalid points provided'))
 		try {
 			const promise = RequestHelper({
 				method: 'GET',
