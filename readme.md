@@ -1,4 +1,4 @@
-# Geo Methods [![Build Status](https://travis-ci.org/sinaabadi/cedar-maps.svg?branch=master)](https://travis-ci.org/sinaabadi/cedar-maps)
+# Cedarmaps Geo Tools [![Build Status](https://travis-ci.org/sinaabadi/cedar-maps.svg?branch=master)](https://travis-ci.org/sinaabadi/cedar-maps)
 
 A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.
 
@@ -6,7 +6,7 @@ A mapping service and highly detailed and spatially accurate GIS vector data app
 ## Install
 
 ```
-$ npm i @cedarstudios/geo-methods
+$ npm i @cedarstudios/cedarmaps-geo-tools
 ```
 
 
