@@ -1,5 +1,5 @@
 {
- "name": "cedar-maps",
+ "name": "@cedarstudios/geo-methods",
  "version": "2.0.1",
  "description": "A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.",
  "license": "MIT",
