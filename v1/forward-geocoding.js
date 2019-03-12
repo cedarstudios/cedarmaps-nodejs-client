@@ -31,7 +31,7 @@ module.exports = ({RequestHelper}) => {
 		return `geocode/${index}/${query}.json?${queryString.stringify(pickBy({
 			limit,
 			distance,
-			type,
+			type: type.length ? type : null,
 			location: validLocation,
 			ne: validNe,
 			sw: validSw
