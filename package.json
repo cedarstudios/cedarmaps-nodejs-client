@@ -1,6 +1,6 @@
 {
  "name": "@cedarstudios/cedarmaps-geo-tools",
- "version": "2.0.2",
+ "version": "2.0.3",
  "description": "A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.",
  "license": "MIT",
  "repository": "https://github.com/cedarstudios/cedarmaps-nodejs-client.git",
@@ -30,7 +30,7 @@
   "distance"
  ],
  "dependencies": {
-  "lodash": "^4.17.10",
+  "lodash.pickby": "^4.6.0",
   "q": "^1.5.1",
   "query-string": "^6.1.0",
   "request": "^2.87.0"

@@ -1,5 +1,5 @@
 const queryString = require('query-string')
-const _ = require('lodash')
+const pickBy = require('lodash.pickby')
 const Q = require('q')
 module.exports = ({RequestHelper}) => {
 	const GenerateDirectionUrl = (points, options) => {
@@ -9,7 +9,7 @@ module.exports = ({RequestHelper}) => {
 		})
 		const url = `direction/cedarmaps.driving/${points.map(point => `${point.lat},${point.lon}`).join(';')}`
 
-		return `${url}?${queryString.stringify(_.pickBy({
+		return `${url}?${queryString.stringify(pickBy({
 			instructions: !!instructions
 		}, undefined))}`
 	}

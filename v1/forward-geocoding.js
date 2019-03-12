@@ -4,7 +4,7 @@ const {INDEXES: {STREET_INDEX}, FORWARD_GEOCODE: {TYPE}} = require('../constants
 const Q = require('q')
 
 const validTypes = Object.values(TYPE)
-const _ = require('lodash')
+const pickBy = require('lodash.pickby')
 module.exports = ({RequestHelper}) => {
 
 	const GenerateForwardGeocodingUrl = (query, index, filters = {}) => {
@@ -28,7 +28,7 @@ module.exports = ({RequestHelper}) => {
 			})
 			type = inputTypes.join(',')
 		}
-		return `geocode/${index}/${query}.json?${queryString.stringify(_.pickBy({
+		return `geocode/${index}/${query}.json?${queryString.stringify(pickBy({
 			limit,
 			distance,
 			type,
