@@ -1,4 +1,4 @@
-const queryString = require('query-string')
+const queryString = require('querystring')
 const pickBy = require('lodash.pickby')
 const Q = require('q')
 module.exports = ({RequestHelper}) => {

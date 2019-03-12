@@ -32,7 +32,6 @@
  "dependencies": {
   "lodash.pickby": "^4.6.0",
   "q": "^1.5.1",
-  "query-string": "^6.1.0",
   "request": "^2.87.0"
  },
  "devDependencies": {

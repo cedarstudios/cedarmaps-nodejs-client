@@ -1,4 +1,4 @@
-const queryString = require('query-string')
+const queryString = require('querystring')
 const validIndex = ['cedarmaps.streets']
 const {INDEXES: {STREET_INDEX}, FORWARD_GEOCODE: {TYPE}} = require('../constants')
 const Q = require('q')
