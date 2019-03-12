@@ -1,28 +1,32 @@
-const request = require('request')
+const fetch = require('node-fetch')
 const assert = require('assert')
 const BASE_URL = 'https://api.cedarmaps.com/v1'
 module.exports = (token) => ({url, body, method}) => {
 	const options = {
 		method,
-		url: `${BASE_URL}/${url}`,
-		body,
-		json: true,
+		body: JSON.stringify(body),
+		mode: 'cors',
 		headers: {
 			'Accept': 'application/json',
-			'Authorization': `Bearer ${token}`
+			'Authorization': `Bearer ${token}`,
+			'Content-Type': 'application/json'
 		}
 	}
 	return new Promise((resolve, reject) => {
-		request(options, function (error, response, body) {
-			assert.equal(error, null)
-			if (response.statusCode >= 400) {
-				return reject({body, message: `Received status ${response.statusCode} from cedar API engine`})
-			}
+		fetch(`${BASE_URL}/${url}`, options)
+			.then(response => {
+				if (!response.ok) {
+					return reject({body, message: `Received status ${response.status} from cedar API engine`})
+				}
+				return response.json()
+			}).then(body => {
 			if (body.status && body.status !== 'OK') {
 				return reject(body)
 			}
 			const results = body.results || body.result || body
 			return resolve(results)
+		}).catch(err => {
+			return reject(err)
 		})
 	})
 }

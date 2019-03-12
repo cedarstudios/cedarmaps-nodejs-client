@@ -31,8 +31,8 @@
  ],
  "dependencies": {
   "lodash.pickby": "^4.6.0",
-  "q": "^1.5.1",
-  "request": "^2.87.0"
+  "node-fetch": "^2.3.0",
+  "q": "^1.5.1"
  },
  "devDependencies": {
   "ava": "^0.25.0"
