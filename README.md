@@ -161,4 +161,4 @@ client.tile('cedarmaps.streets', (err, res) => { console.log(err, res)});
 ```
 
 # Issues
-If you have any questions while implementing Cedar Maps Web SDK, please feel free to open a [new issue](https://github.com/cedarstudios/cedarmaps-nodejs-client/issues).
+If you have any questions while implementing Cedar Maps Node.js client, please feel free to open a [new issue](https://github.com/cedarstudios/cedarmaps-nodejs-client/issues).
