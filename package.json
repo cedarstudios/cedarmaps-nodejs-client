@@ -1,6 +1,6 @@
 {
  "name": "@cedarstudios/cedarmaps",
- "version": "1.0.1",
+ "version": "1.0.2",
  "description": "A node.js and browser JavaScript client to CedarMaps services.",
  "license": "MIT",
  "repository": "https://github.com/cedarstudios/cedarmaps-nodejs-client.git",

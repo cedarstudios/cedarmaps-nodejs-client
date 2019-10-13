@@ -9,7 +9,7 @@ A [node.js](https://nodejs.org/) and browser JavaScript client to CedarMaps serv
   * [Trip Calculator](#trip-calculator)
   * [Turn by Turn Navigation](#turn-by-turn-navigation)
   * [TileJSON](#tilejson)
-
+- [Issues](#issues)
 
 # Installation
 ```
@@ -69,7 +69,7 @@ Travel-time and distance between up to **100** pairs of origin and destination, 
 
 Reponse object description: 
 
-| Param | Description |
+| Key | Description |
 | ---- | ---- |
 | distance | The total distance of the route, in Meters. |
 | time | The total time of the route, in Milliseconds. |
@@ -82,8 +82,10 @@ client.distance([{ lat: 35.76312468, lon: 51.40292645 }, { lat: 35.76288091, lon
 ```
 
 ## Turn by Turn Navigation
+Signature: `client.direction(points, options, callback)`
+
 Calculates the optimal driving routes between two or more points. (Shortest path)
-Signature: `client.distance(points, callback)`
+
 
 **Note**: The number of provided points must be even.
 
@@ -100,7 +102,7 @@ client.direction([{ lat: 35.76312468, lon: 51.40292645 }, { lat: 35.76288091, lo
 ```
 Reponse object description: 
 
-| Param | Description |
+| Key | Description |
 | ---- | ---- |
 | distance | The total distance of the route, in Meters. |
 | time | The total time of the route, in Milliseconds. |
@@ -108,22 +110,27 @@ Reponse object description:
 | geometry | The geometry of the route as a GeoJSON LineString. |
 
 Here's the `intructions` object description:
+
 **Note:** The last item in instructions array is the stop item with `distance` and `time` values of `0`.
 
-| Param | Description |
+| Key | Description |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | text | Descriptive text of the instruction. |
 | street_name | The name of the street to turn onto in order to follow the route. |
 | distance | The distance for this instruction, in Meters. |
 | time | The duration for this instruction, in Milliseconds. |
 | interval | An array containing the first and the last index (relative to geometry.coordinates) of the points for this instruction. This is useful to know for which part of the route the instructions are valid. |
-| sign | A number which specifies the sign to show <ul><li>Keep Left=-7</li> <li>Turn Sharp Left = -3</li> <li>Turn Left = -2</li> <li>Turn Slight Left = -1</li> <li>Continue = 0</li> <li>Turn Slight Right = 1</li> <li>Turn Right = 2</li> <li>Turn Sharp Right = 3</li> <li>Reached via = 5</li> <li>Roundabout = 6</li> <li>Finish = 4</li></ul> |
+| sign | A number representing actions that should be taken to follow the instructions. You may use this number for determining the action icon in your interface, or voice instructions, etc.: <ul><li>Keep Left=-7</li> <li>Turn Sharp Left = -3</li> <li>Turn Left = -2</li> <li>Turn Slight Left = -1</li> <li>Continue = 0</li> <li>Turn Slight Right = 1</li> <li>Turn Right = 2</li> <li>Turn Sharp Right = 3</li> <li>Reached via = 5</li> <li>Roundabout = 6</li> <li>Finish = 4</li></ul> |
 
 
 ## TileJSON
 Signature: `client.tile(profile)`
 
-TileJSON is a format that manages the complexities of custom maps. It organizes zoom levels, center points, legend contents, and more, into a format that makes it easy to display a map. In order to get CedarMaps tiles you need to have their specification and then pass these info to your favorite map libarary (Leaflet, OpenLayers, etc.)
+TileJSON is a format that manages the complexities of custom maps. It organizes zoom levels, center points, legend contents, and more, into a format that makes it easy to display a map.
+
+In order to get CedarMaps tiles you need to have their specification and then pass these info to your favorite map libarary (Leaflet, OpenLayers, etc.).
+
+For instance, in our [cedarmaps-web-sdk-raster](https://github.com/cedarstudios/cedarmaps-web-sdk-raster#basic-usage-via-cdn) you use this TileJSON url for displaying map tiles.
 
 | Options | Value | Description |
 |----------------------|--------|-------------------------------------------------------|
@@ -152,3 +159,6 @@ Sample usage:
 ```js
 client.tile('cedarmaps.streets', (err, res) => { console.log(err, res)});
 ```
+
+# Issues
+If you have any questions while implementing Cedar Maps Web SDK, please feel free to open a [new issue](https://github.com/cedarstudios/cedarmaps-nodejs-client/issues).
