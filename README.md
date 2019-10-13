@@ -2,9 +2,7 @@
 A [node.js](https://nodejs.org/) and browser JavaScript client to CedarMaps services.
 
 # Table of contents
-- [Cedarmaps](#cedarmaps)
 - [Installation](#installation)
-  * [Initialization](#initialization)
 - [API](#api)
   * [Forward Geocoder](#forward-geocoder)
   * [Reverse Geocoder](#reverse-geocoder)
@@ -19,8 +17,6 @@ $ npm i @cedarstudios/cedarmaps
 ```
 
 In order to use CedarMaps' API, you **MUST** have an access token. Get one from [CedarMaps](https://www.cedarmaps.com/) website (Menu link: "درخواست اکانت رایگان"). It may take a couple of hours until your request is processed and your credentials are emailed to you.
-
-## Initialization
 
 ```javascript
 const cedarMaps = require('@cedarstudios/cedarmaps');
