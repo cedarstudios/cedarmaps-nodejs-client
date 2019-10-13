@@ -1,5 +1,5 @@
 const queryString = require('querystring')
-const validIndex = ['cedarmaps.streets']
+const validIndex = ['cedarmaps.streets', 'cedarmaps.places', 'cedarmaps.mix']
 const {INDEXES: {STREET_INDEX}, FORWARD_GEOCODE: {TYPE}} = require('../constants')
 const Q = require('q')
 
@@ -45,5 +45,4 @@ module.exports = ({RequestHelper}) => {
 		deferred.promise.nodeify(callback)
 		return deferred.promise
 	}
-
 }

@@ -1,14 +1,9 @@
 {
- "name": "@cedarstudios/cedarmaps-geo-tools",
+ "name": "@cedarstudios/cedarmaps",
  "version": "2.0.5",
- "description": "A mapping service and highly detailed and spatially accurate GIS vector data application that covers the whole country of Iran.",
+ "description": "A node.js and browser JavaScript client to CedarMaps services.",
  "license": "MIT",
  "repository": "https://github.com/cedarstudios/cedarmaps-nodejs-client.git",
- "author": {
-  "name": "Sina Abadi",
-  "email": "sina_abadi@hotmail.com",
-  "url": "https://www.npmjs.com/~sinaabadi"
- },
  "main": "index.js",
  "engines": {
   "node": ">=6"
@@ -25,9 +20,9 @@
  ],
  "keywords": [
   "map",
-  "cedar",
+  "cedarmaps",
   "geocoding",
-  "distance"
+  "distance-matrix"
  ],
  "dependencies": {
   "lodash.pickby": "^4.6.0",

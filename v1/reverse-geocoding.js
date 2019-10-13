@@ -1,19 +1,36 @@
-const {INDEXES:{STREET_INDEX}} = require('../constants')
-const validIndex = [STREET_INDEX]
-const Q = require('q')
+const Q = require('q');
+const { INDEXES: { STREET_INDEX } } = require('../constants');
 
 module.exports = ({RequestHelper}) => {
-	const GenerateForwardGeocodingUrl = (lat, lon, index) => {
-		if (!lat || !lon) throw Error('Invalid lat or lon provided')
+	
+	const normalize = function(x) {
+		if (x.lat !== undefined && x.lng !== undefined) {
+			return x.lat + ',' + x.lng;
+		} else if (x.lat !== undefined && x.lon !== undefined) {
+			return x.lon + ',' + x.lat;
+		} else {
+			return x[0] + ',' + x[1];
+		}
+	}
+	const GenerateReverseGeocodingUrl = (location, options) => {
+		let optionsQueryString = '';
+		const query = normalize(location);
 
-		return `geocode/${index}/${lat},${lon}.json`
+		if (options.verbosity) {
+			optionsQueryString += '&verbosity=' + options.verbosity;
+		}
+
+		if (options.prefix) {
+			optionsQueryString += '&prefix=' + options.prefix;
+		}
+
+
+		return `geocode/${STREET_INDEX}/${query}.json?${optionsQueryString}`
 	}
 
-
-	return (lat, lon, index = STREET_INDEX, callback) => {
+	return (location, options = {}, callback) => {
 		const deferred = Q.defer()
-		if (!validIndex.includes(index)) deferred.reject(Error('Invalid reverse geocode index provided'))
-		deferred.resolve(RequestHelper({method: 'GET', url: GenerateForwardGeocodingUrl(lat, lon, index)}))
+		deferred.resolve(RequestHelper({method: 'GET', url: GenerateReverseGeocodingUrl(location, options)}))
 		deferred.promise.nodeify(callback)
 		return deferred.promise
 	}
